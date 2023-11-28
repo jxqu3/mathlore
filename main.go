@@ -9,7 +9,7 @@ import (
 )
 
 var frame = 0.0    // The frame counter
-var mult = 1       // Frame multiplier
+var mult = 1.0     // Frame multiplier
 var div = 20       // Number of divisions/lines
 var paused = false // Whether the visualizer is paused
 
@@ -34,7 +34,7 @@ func draw() {
 
 func main() {
 	rl.SetConfigFlags(rl.FlagMsaa4xHint | rl.FlagWindowHighdpi | rl.FlagVsyncHint)
-	rl.InitWindow(1000, 1000, "Ventanica")
+	rl.InitWindow(1000, 1000, "circlesim")
 
 	for !rl.WindowShouldClose() {
 		switch {

@@ -3,7 +3,7 @@ globalenv: []
 commands:
 - name: build
   description: Example build command!
-  command: growl cross
+  command: growl cross -s -l -nc
   env: []
   extra: []
 - name: git
