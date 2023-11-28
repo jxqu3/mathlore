@@ -8,10 +8,10 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-var frame = 0.0
-var mult = 0.1
-var div = 200
-var paused = false
+var frame = 0.0    // The frame counter
+var mult = 1       // Frame multiplier
+var div = 20       // Number of divisions/lines
+var paused = false // Whether the visualizer is paused
 
 func draw() {
 	rl.ClearBackground(color.RGBA{20, 20, 20, 255})
@@ -20,7 +20,7 @@ func draw() {
 	rl.DrawCircleLines(500, 500, 400, rl.White)
 
 	for i := 0; i < div; i++ {
-		res := frame * float64(i)
+		res := math.Mod(frame, float64(i))
 		x := int32(math.Cos(res)*400 + 500)
 		y := int32(math.Sin(res)*400 + 500)
 		rl.DrawLine(218, 218, x, y, rl.White)
@@ -29,6 +29,7 @@ func draw() {
 	rl.DrawText(fmt.Sprintf("mult=%.2f", mult), 10, 40, 20, rl.White)
 	rl.DrawText(fmt.Sprint("FPS: ", rl.GetFPS()), 10, 70, 20, rl.White)
 	rl.DrawText(fmt.Sprintf("Paused: %t", paused), 10, 100, 20, rl.White)
+	rl.DrawText(fmt.Sprintf("divisions=%d", div), 10, 130, 20, rl.White)
 }
 
 func main() {
@@ -36,12 +37,16 @@ func main() {
 	rl.InitWindow(1000, 1000, "Ventanica")
 
 	for !rl.WindowShouldClose() {
-		if rl.IsKeyPressed(rl.KeySpace) {
+		switch {
+		case rl.IsKeyPressed(rl.KeySpace):
 			paused = !paused
+		case rl.IsKeyDown(rl.KeyLeftShift):
+			mult += float64(rl.GetMouseWheelMove()) * 0.1
+		default:
+			div += int(rl.GetMouseWheelMove())
 		}
 		if !paused {
 			frame += float64(rl.GetFrameTime()) * mult
-			mult += float64(rl.GetMouseWheelMove()) * 0.1
 		}
 		rl.BeginDrawing()
 		draw()
