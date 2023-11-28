@@ -1,0 +1,19 @@
+shell: cmd /C
+globalenv: []
+commands:
+- name: build
+  description: Example build command!
+  command: growl cross
+  env: []
+  extra: []
+- name: git
+  description: 'Example git commit command: growl git "message"'
+  command: git add -A
+  env: []
+  extra:
+  - git commit -m %1
+- name: gp
+  description: 'Example git push command: growl gp <master/main...>'
+  command: git push origin %1
+  env: []
+  extra: []
