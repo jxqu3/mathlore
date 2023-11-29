@@ -12,6 +12,7 @@ Clone this repo. If you only care about the math stuff, edit maths.go. there you
 Run with `go run .`
 
 # screenshots
+![Multiplication Animated GIF](anim.gif)
 ![Multiplication](image.png)
 ![Tan(x*t)](image-1.png)
 
