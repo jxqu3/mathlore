@@ -4,7 +4,8 @@ This is inspired by [Visual Alchemy](https://www.youtube.com/@visual-alchemy)'s 
 
 # controls
 Set divisions with MouseWheel
-Set speed with Shift+MouseWheel
+Set speed with Shift+MouseWheel (faster with Ctrl+Shift+MouseWheel)
+Toggle HUD (text) with F1
 
 # screenshots
 ![Multiplication](image.png)
