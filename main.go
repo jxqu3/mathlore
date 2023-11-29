@@ -12,15 +12,16 @@ const LineWidth = 1
 const Radius = 400
 
 var div = 400  // Number of divisions/lines
-var mult = 1.0 // Frame multiplier
+var mult = 0.1 // Frame multiplier
 
 var t = 0.0        // The frame counter
+var showHUD = true // Whether to show the HUD
 var paused = false // Whether the visualizer is paused
 
 var divAngle = 2 * math.Pi / float64(div)
 
 func f(x float64) float64 {
-	return x * t
+	return math.Tan(x * t)
 }
 
 func draw() {
@@ -40,11 +41,13 @@ func draw() {
 		rl.DrawLine(startPosX, startPosY, endPosX, endPosY, rl.White)
 	}
 
-	rl.DrawText(fmt.Sprintf("divisions=%d", div), 10, 10, 20, rl.White)
-	rl.DrawText(fmt.Sprintf("t=%.2f", t), 10, 40, 20, rl.White)
-	rl.DrawText(fmt.Sprintf("multiplier=%.2f", mult), 10, 70, 20, rl.White)
-	rl.DrawText(fmt.Sprintf("Paused: %t", paused), 10, 100, 20, rl.White)
-	rl.DrawText(fmt.Sprint("FPS: ", rl.GetFPS()), 900, 10, 20, rl.White)
+	if showHUD {
+		rl.DrawText(fmt.Sprintf("divisions=%d", div), 10, 10, 20, rl.White)
+		rl.DrawText(fmt.Sprintf("t=%.2f", t), 10, 40, 20, rl.White)
+		rl.DrawText(fmt.Sprintf("multiplier=%.2f", mult), 10, 70, 20, rl.White)
+		rl.DrawText(fmt.Sprintf("Paused: %t", paused), 10, 100, 20, rl.White)
+		rl.DrawText(fmt.Sprint("FPS: ", rl.GetFPS()), 900, 10, 20, rl.White)
+	}
 }
 
 func getXY(i int) (int32, int32) {
@@ -60,8 +63,14 @@ func main() {
 		switch {
 		case rl.IsKeyPressed(rl.KeySpace):
 			paused = !paused
+		case rl.IsKeyPressed(rl.KeyF1):
+			showHUD = !showHUD
 		case rl.IsKeyDown(rl.KeyLeftShift):
-			mult += float64(rl.GetMouseWheelMove()) * 0.1
+			if rl.IsKeyDown(rl.KeyLeftControl) {
+				mult += float64(rl.GetMouseWheelMove()) * 2
+			} else {
+				mult += float64(rl.GetMouseWheelMove()) * 0.1
+			}
 		default:
 			div += int(rl.GetMouseWheelMove())
 			divAngle = 2 * math.Pi / float64(div)

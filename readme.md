@@ -8,3 +8,4 @@ Set speed with Shift+MouseWheel
 
 # screenshots
 ![Multiplication](image.png)
+![Tan(x*t)](image-1.png)
