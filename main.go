@@ -11,7 +11,7 @@ import (
 const LineWidth = 1
 const Radius = 400
 
-var div = 100  // Number of divisions/lines
+var div = 400  // Number of divisions/lines
 var mult = 1.0 // Frame multiplier
 
 var t = 0.0        // The frame counter
