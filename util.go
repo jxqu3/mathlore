@@ -15,7 +15,8 @@ func drawCircle(cx, cy, radius float32, step float64, color color.RGBA) {
 	}
 }
 
+const FontSize = 26
+
 func drawText(text string, x, y int32, color color.RGBA) {
-	size := 30
-	rl.DrawTextEx(font, text, rl.Vector2{X: float32(x), Y: float32(y)}, float32(size), 0, color)
+	rl.DrawTextEx(font, text, rl.Vector2{X: float32(x), Y: float32(y)}, float32(FontSize), 0, color)
 }

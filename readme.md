@@ -4,8 +4,10 @@ This is inspired by [Visual Alchemy](https://www.youtube.com/@visual-alchemy)'s 
 
 # controls
 Set divisions with MouseWheel
-Set speed with Shift+MouseWheel (faster with Ctrl+Shift+MouseWheel)
+Set speed with Shift+MouseWheel (faster with Alt+Shift+MouseWheel)
 Toggle HUD (text) with F1
+Move camera with Middle Mouse Button
+Zoom in/out with Ctrl+MouseWheel
 
 # usage
 Clone this repo. If you only care about the math stuff, edit maths.go. there you have the function, the defaults, etc.

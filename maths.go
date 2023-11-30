@@ -1,13 +1,16 @@
 package main
 
+import "math"
+
 // The function to be visualized
 // f(x) =
 func f(x float64) float64 {
-	return x * t
+	return math.Sin(t) * x
 }
 
 // Constants
 const LineWidth = 1
+const FontName = "res/playfair.ttf"
 const Radius = 400
 
 // Global variables
