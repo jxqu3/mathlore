@@ -8,6 +8,6 @@ const LineWidth = 1
 const FontName = "res/playfair.ttf"
 const Radius = 400
 
-// Global variables
-var div = 400  // Number of divisions/lines
+// Global variables defaults
+var div = 300  // Number of divisions/lines
 var mult = 0.1 // Frame multiplier

@@ -1,6 +1,7 @@
-y := math.sin(2 * math.pi / (x / div)) * t
+y := x * t
 
 // built in: x, t (time), div (number of divisions) 
+//y := math.sin(2 * math.pi / (x / div)) * t
 
 // math is imported by default
 // for a list of math possibilities: https://github.com/d5/tengo/blob/master/docs/stdlib-math.md

@@ -49,14 +49,14 @@ func handleInput(cam *rl.Camera2D) {
 		showHUD = !showHUD
 	case rl.IsKeyDown(rl.KeyLeftShift):
 		if rl.IsKeyDown(rl.KeyLeftAlt) {
-			mult += float64(rl.GetMouseWheelMove()) * 2
+			mult += float64(rl.GetMouseWheelMove())
 		} else {
 			mult += float64(rl.GetMouseWheelMove()) * 0.1
 		}
 	case rl.IsKeyDown(rl.KeyLeftControl):
 		cam.Zoom = max(cam.Zoom+float32(rl.GetMouseWheelMove()*0.1), 0.1)
 	default:
-		div += int(rl.GetMouseWheelMove())
+		div += int(rl.GetMouseWheelMove()) * 10
 	}
 	if !paused {
 		t += float64(rl.GetFrameTime()) * mult
@@ -68,7 +68,6 @@ func handleInput(cam *rl.Camera2D) {
 		cam.Offset.X += mouseDelta.X
 		cam.Offset.Y += mouseDelta.Y
 	}
-
 }
 
 func getXY(i float64) (int32, int32) {
@@ -80,15 +79,13 @@ func getXY(i float64) (int32, int32) {
 	return x, y
 }
 func main() {
-	go func() {
-		scr := tengo.NewScript(loadScript())
-		scr.SetImports(stdlib.GetModuleMap("math"))
-		scr.Add("x", 0)
-		scr.Add("t", 0)
-		scr.Add("div", div)
-		compiled, _ := scr.Compile()
-		tengoScr = compiled
-	}()
+	scr := tengo.NewScript(loadScript())
+	scr.SetImports(stdlib.GetModuleMap("math"))
+	scr.Add("x", 0)
+	scr.Add("t", 0)
+	scr.Add("div", div)
+	compiled, _ := scr.Compile()
+	tengoScr = compiled
 
 	rl.SetConfigFlags(rl.FlagMsaa4xHint | rl.FlagVsyncHint | rl.FlagWindowHighdpi)
 	rl.InitWindow(1000, 1000, "circlesim")

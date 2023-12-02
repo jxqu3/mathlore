@@ -1,9 +1,13 @@
-shell: cmd /C
 globalenv: []
 commands:
 - name: build
   description: Example build command!
   command: growl cross -s -l -nc
+  env: []
+  extra: []
+- name: buildl
+  description: Example build linux command!
+  command: growl cross -l
   env: []
   extra: []
 - name: git
