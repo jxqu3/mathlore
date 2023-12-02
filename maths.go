@@ -1,12 +1,7 @@
 package main
 
-import "math"
-
-// The function to be visualized
-// f(x) =
-func f(x float64) float64 {
-	return math.Sin(t) * x
-}
+// Script with the math function
+const Script = "func.tengo"
 
 // Constants
 const LineWidth = 1

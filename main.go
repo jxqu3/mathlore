@@ -5,6 +5,8 @@ import (
 	"image/color"
 	"math"
 
+	"github.com/d5/tengo/v2"
+	"github.com/d5/tengo/v2/stdlib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -78,6 +80,16 @@ func getXY(i float64) (int32, int32) {
 	return x, y
 }
 func main() {
+	go func() {
+		scr := tengo.NewScript(loadScript())
+		scr.SetImports(stdlib.GetModuleMap("math"))
+		scr.Add("x", 0)
+		scr.Add("t", 0)
+		scr.Add("div", div)
+		compiled, _ := scr.Compile()
+		tengoScr = compiled
+	}()
+
 	rl.SetConfigFlags(rl.FlagMsaa4xHint | rl.FlagVsyncHint | rl.FlagWindowHighdpi)
 	rl.InitWindow(1000, 1000, "circlesim")
 
