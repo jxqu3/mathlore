@@ -10,8 +10,9 @@ Move camera with Middle Mouse Button
 Zoom in/out with Ctrl+MouseWheel
 
 # usage
-Clone this repo. If you only care about the math stuff, edit maths.go. there you have the function, the defaults, etc.
-Run with `go run .`
+~Clone this repo. If you only care about the math stuff, edit maths.go. there you have the function, the defaults, etc...~
+NEW: Download the latest binary in releases, and edit the script "func.tengo" to your liking!
+
 
 # screenshots
 ![Multiplication Animated GIF](anim.gif)
